@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Feedback Form</title>
+</head>
+<body>
 
+<h2>Feedback Form</h2>
+
+<form method = "post" action = "http://www.deitel.com">
+  <table>
+    <tr>
+      <td>Name:</td>
+      <td><input type="text" id="name" name="name" required/></td>
+    </tr>
+    
+    <tr>
+      <td>Email:</td>
+      <td><input type="email" id="email" name="email" placeholder="name@example.com" required/></td>
+    </tr>
+    
+    <tr>
+      <td>Comments:</td>
+      <td><textarea id="comments" name="comments" placeholder="Your comments..." rows="5" cols="30"></textarea></td>
+    </tr>
+    
+    <tr>
+      <td>Requests:</td>
+      <td><textarea id="requests" name="requests" placeholder="Your requests..." rows="5" cols="30"></textarea></td>
+    </tr>
+
+    <tr>
+      <td>Overall Satisfaction:</td>
+      <td>
+        <select id="satisfaction" name="satisfaction">
+          <option value="very-satisfied">Very Satisfied</option>
+          <option value="satisfied">Satisfied</option>
+          <option value="neutral">Neutral</option>
+          <option value="dissatisfied">Dissatisfied</option>
+          <option value="very-dissatisfied">Very Dissatisfied</option>
+        </select>
+      </td>
+    </tr>
+
+   <tr>
+     <td colspan="2">
+       <input type="submit" value="Submit"/>
+                    <input type="reset" value="Reset"/>
+                </td>
+            </tr>
+  </table>
+</form>
+
+</body>
+</html>
