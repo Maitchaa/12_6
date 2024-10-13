@@ -1,1 +1,5 @@
 instructions on our website:
+
+first, "index.html" => is the first page in our website
+
+second, 
