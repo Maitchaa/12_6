@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +34,7 @@
                 
         	<tbody>
             	<tr>
-                <th><a href="#about">About Us</a></th>
+                <th><a href="#spotlight">Spotlight of the day</a></th>
                 <th><a href="#community">Community</a></th>
                 <th><a href="#contact">Contact Us</a></th>
             	</tr>
@@ -51,7 +52,7 @@
 
 	<section>
     	<article>
-            <h2>Recipe of the Day</h2>
+            <h2 = "spotlight">Recipe of the Day</h2>
     		<figure>
         	<img src="https://wildflourskitchen.com/wp-content/uploads/2016/04/Copycat-FIVE-GUYS-Fries-720x405.jpg"  alt="Recipe of the Day" width="300" height="200">
         	<a href="fastfood.html#five"> 
@@ -59,8 +60,32 @@
 			</a>
     		</figure>
         </article>
+    
+		<article>
+        	<h2>Ingredient Spotlight: Avocado</h2>
+    		<p>Some recipes with this nutrient rich food you can try:</p>
+    		<ul>
+        		<li>Avocado Toast</li>
+        		<li>Guacamole</li>
+        		<li>Avocado Salad</li>
+    		</ul>
+         </article>
 
-    	<article>
+		<article>
+			<h2 id = "community">Join Our Community</h2>
+			<p> We value your feedback! Share your thoughts and suggestions <a href="feedback.html"> here.</a> </p>
+				<blockquote> "Cooking is like love. It should be entered into with abandon or not at all." – Julia Child </blockquote>
+        
+			<strong id> Subscribe to Our Newsletter </strong>
+			<form method="post" action="index.html">
+				<label for="email">Email:</label>
+				<input type="email" name="email" id="email"  placeholder="Your email">
+				<input type="submit" value="Subscribe">
+			</form>
+		</article>
+    </section>
+	
+	<article>
             <h2>Cooking tips of the day</h2>
     		<ol>
         		<li>
@@ -83,32 +108,8 @@
     		</ol>
         </article>
     
-		<article>
-        	<h2>Ingredient Spotlight: Avocado</h2>
-    		<p>Some recipes with this nutrient rich food you can try:</p>
-    		<ul>
-        		<li>Avocado Toast</li>
-        		<li>Guacamole</li>
-        		<li>Avocado Salad</li>
-    		</ul>
-         </article>
-
-		<article>
-			<h2>Join Our Community</h2>
-			<p> We value your feedback! Share your thoughts and suggestions <a href="feedback.html"> here.</a> </p>
-				<blockquote> "Cooking is like love. It should be entered into with abandon or not at all." – Julia Child </blockquote>
-        
-			<strong> Subscribe to Our Newsletter </strong>
-			<form method="post" action="index.html">
-				<label for="email">Email:</label>
-				<input type="email" name="email" id="email"  placeholder="Your email">
-				<input type="submit" value="Subscribe">
-			</form>
-		</article>
-    </section>
-    
     <footer>
-    	<h2>Contact Us</h2>
+    	<h2 id = "contact">Contact Us</h2>
 		<p>For inquiries, please reach out to us at <a href="mailto:info@instarecipe.com">info@instarecipe.com</a></p>
 			<address>
 				Insta Recipe <br>
