@@ -1,5 +1,5 @@
 instructions on our website:
 
-first, "index.html" => is the first page in our website
+first, "index.html" => is the first page in our website. you can navigate to all other pages such as fastfood (copy cat recipes) , generated (recipes from your ingredients), traditional (normal recipes) via this page. It has also directs you to sections in the page such as spotlight (features for the day), contact us and community, which can access the feedback page.
 
-second, 
+second,a 
