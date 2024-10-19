@@ -2,4 +2,8 @@ instructions on our website:
 
 first, "index.html" => is the first page in our website. you can navigate to all other pages such as fastfood (copy cat recipes) , generated (recipes from your ingredients), traditional (normal recipes) via this page. It has also directs you to sections in the page such as spotlight (features for the day), contact us and community, which can access the feedback page.
 
-second,a 
+from the home page you get to:
+  1. "traditional.html": which is a page that has generic recipes that are commonly searched for, their ingredients and instructions are listed with them.
+  2. "fastfood.html": which is a page that shows copycat recipes of popular fastfood items, the ingredients and instructions are listed.
+  3. "generated.html": a javascript dependent page, where the recipes generated will be fully dependent on the type of input the user submits.
+  4. "feedback.html": a page where a user can describe their experience, give feedback, and suggestions.
