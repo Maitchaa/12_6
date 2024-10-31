@@ -3,6 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <title>Feedback Form</title>
+  <style> 
+    body {
+      border: 2px dashed #f084ab;
+      background-image: url(https://cdn.pixabay.com/photo/2023/02/01/21/40/pink-7761356_640.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+    input[type=text], input[type=email] {
+      border: 2px solid #f084ab;
+      border-radius: 4px;
+      background-color: #fbf4f4;
+      color: black;
+    }
+    select {
+      width: 100%;
+      padding: 16px 20px;
+      border: 2px solid #f084ab;
+      border-radius: 4px;
+      background-color: #fbf4f4;
+    }
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 12px 20px;
+      box-sizing: border-box;
+      border: 2px solid #f084ab;
+      border-radius: 4px;
+      background-color: #fbf4f4;
+}
+  
+  </style>
 </head>
 <body>
 
@@ -44,7 +76,7 @@
     </tr>
                 <tr>
               <td colspan="2">
-                <label>how likely are you to recomend our website to friends?&nbsp;
+                <label>How likely are you to recommend our website to a friend?&nbsp;
                  0<input type="range"
                            max="10"
                            min="0"
