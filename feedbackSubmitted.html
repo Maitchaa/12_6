@@ -22,16 +22,13 @@
       font-size: 3em;
       font-family: Arial;
     }
-    a:link{
-      text-decoration: none;
-      color:#d62264;
+    #last {
+      text-align:center;
+      position: center;
+      margin:2%;
     }
-    a:hover{
-      text-decoration: underline;
-      background-color: pink;
-    }
-    a:visited{
-      color:grey;
+    #last span {
+      border: 2px dotted red;
     }
   </style>
 </head>
@@ -40,7 +37,12 @@
   <h1>
     Your feedback is submitted successfully!
   </h1>
-  <center> <a href = "index.html">return to website</a></center>
+  <div id="last">	
+    <span>
+      Go to homepage
+      <button><a href="index.html">home</a></button>
+    </span>
+  </div>
 
  </body>
   
