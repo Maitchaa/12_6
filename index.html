@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <title>InstaRecipe</title>
     <link rel="stylesheet" type="text/css" href="styleFastfood.css"> 
-    <script src = "index.js"> </script>
   <style>
     body, table {
         margin: 0 auto;
@@ -32,7 +30,34 @@
     footer address {
         font-style: italic;}
 </style>
+<script> 
+	function init() {
+            var emailInput = document.getElementById("email");
+            var myForm = document.getElementById("myForm");
 
+            myForm.addEventListener("submit", function (event) {
+                event.preventDefault(); 
+
+                var email = emailInput.value; 
+                var confirmationMessage = "Please ensure the email you have provided is correct: " + email;
+
+                if (confirm(confirmationMessage)) {
+                    alert("Thank you for subscribing to our newsletter!");
+                    emailInput.value = "";  
+                }
+            });
+
+            emailInput.addEventListener("focus", function () {
+                emailInput.style.borderColor = "blue";
+            });
+
+            emailInput.addEventListener("blur", function () {
+                emailInput.style.borderColor = "";
+            });
+        }
+
+        window.addEventListener("load", init, false);
+</script>
 </head>
 <body>
 	<header>
