@@ -5,11 +5,13 @@ function init()
     var subscribeButton = document.getElementById("subscribe");
     var myForm = document.getElementById("myForm");
 
-    subscribeButton.addEventListener("click", function () {
+    subscribeButton.addEventListener("click", function (event) {
+        event.preventDefault();
         email = emailInput.value;  
     });
 
-    myForm.addEventListener("submit", function () {
+    myForm.addEventListener("submit", function (event) {
+        event.preventDefault();
         var confirmationMessage = "Please ensure the email you have provided is correct: " + email;
         
         if (confirm(confirmationMessage)) {
