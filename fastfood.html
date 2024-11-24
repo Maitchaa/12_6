@@ -4,8 +4,36 @@
   <meta charset="UTF-8">
   <title>InstaRecipe</title>
   <link rel="stylesheet" type="text/css" href="styleFastfood.css"> 
+  <script type="text/javascript">	
+	function start() {
+      var input = window.prompt("Pick your favorite fastFood item!\n(1: Wendy's frosty, 2: Chick Fil A nuggets, 3: Taco bell tacos)", 1);
+      document.getElementById("output").innerHTML = "<h4 class='main' style='color:lightblue;'>Your favorite recipe of the day!</h4>";
+      var number = parseInt(input);
+
+      vid(number, document.getElementById("output"));
+    }
+
+    function vid(num, outp) {
+      var content = "You picked option " + num + "<br>";
+	  
+      if (num === 1) {
+        content += "<iframe width='560' height='315' src='https://www.youtube.com/embed/idZZMtHVg4Y' frameborder='0' allowfullscreen></iframe>";
+      } else if (num === 2) {
+        content += "<iframe width='560' height='315' src='https://www.youtube.com/embed/qVAoPWXrvX8' frameborder='0' allowfullscreen></iframe>";
+      } else if (num === 3) {
+        content += "<iframe width='560' height='315' src='https://www.youtube.com/embed/szGetAEA3-s' frameborder='0' allowfullscreen></iframe>";
+      } else {
+        content += "This was not an option! No video will be loaded.";
+      }
+      
+      outp.innerHTML += content;  
+    }
+
+    window.addEventListener("load", start, false);
+  </script>
 </head>
 <body>
+	<p style="text-align:center" id="output"></p>
   <h1 class="main">Fast Food Copycat Recipies </h1>
 
   <div id="getter">
