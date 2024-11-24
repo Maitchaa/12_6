@@ -21,6 +21,7 @@
         border-radius: 8px;
         box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
         background-color: rgba(255, 255, 255, 0.75);}
+
     footer {
         padding: 10px;
         text-align: left;
@@ -31,33 +32,34 @@
         font-style: italic;}
 </style>
 <script> 
-	function init() {
-            var emailInput = document.getElementById("email");
-            var myForm = document.getElementById("myForm");
+    function init() {
+        var emailInput = document.getElementById("email");
+        var myForm = document.getElementById("myForm");
 
-            myForm.addEventListener("submit", function (event) {
-                event.preventDefault(); 
+        myForm.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-                var email = emailInput.value; 
-                var confirmationMessage = "Please ensure the email you have provided is correct: " + email;
+        var email = emailInput.value; 
+        var confirmationMessage = "Please ensure the email you have provided is correct: " + email;
 
-                if (confirm(confirmationMessage)) {
-                    alert("Thank you for subscribing to our newsletter!");
-                    emailInput.value = "";  
-                }
-            });
+        if (confirm(confirmationMessage)) {
+                window.alert("Thank you for subscribing to our newsletter!");
+                emailInput.value = "";  
+            }
+        });
 
-            emailInput.addEventListener("focus", function () {
-                emailInput.style.borderColor = "blue";
-            });
+        emailInput.addEventListener("focus", function () {
+            emailInput.style.borderColor = "blue";
+        });
 
-            emailInput.addEventListener("blur", function () {
-                emailInput.style.borderColor = "";
-            });
-        }
+        emailInput.addEventListener("blur", function () {
+            emailInput.style.borderColor = "";
+        });
+    }
 
-        window.addEventListener("load", init, false);
+    window.addEventListener("load", init, false);
 </script>
+
 </head>
 <body>
 	<header>
@@ -130,11 +132,12 @@
 				<blockquote> "Cooking is like love. It should be entered into with abandon or not at all." – Julia Child </blockquote>
         
 			<strong> Subscribe to Our Newsletter </strong>
-			<form method="post" action="index.html">
-				<label for="email">Email:</label>
-				<input type="email" name="email" id="email"  placeholder="Your email">
-				<input type="submit" value="Subscribe">
-			</form>
+			<form id="myForm" method="post" action="https://maitchaa.github.io/12_6/">
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email"  placeholder="Your email">
+    <input type="submit" value="Subscribe">
+</form>
+
 		</article>
     </section>
 	
