@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="styleFastfood.css"> 
-<title>Generated recipes</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dish Finder</title>
+  <link rel="stylesheet" type="text/css" href="styleFastfood.css"> 
 <style>
 	label {
 		border: 3px dotted white;
@@ -17,26 +18,121 @@
 	}
 
 	
-	label:hover {
-	    background-color: pink;
-	    color: white;
-	}
 	
 	
 </style>
+  
+  <script>
+    // creates an array of objects, where each object contains:
+    // - `name`: the dish's name.
+    // - `ingredients`: an array of ingredients required for the dish.
+    const dishes = [
+      { name: 'Spaghetti Carbonara', ingredients: ['Spaghetti', 'eggs', 'Parmesan cheese', 'pancetta', 'black pepper'] },
+      { name: 'Margherita Pizza', ingredients: ['Pizza dough', 'tomato sauce', 'fresh mozzarella', 'basil', 'olive oil'] },
+      { name: 'Lasagna', ingredients: ['Lasagna sheets', 'ground beef', 'tomato sauce', 'ricotta', 'mozzarella', 'Parmesan'] },
+      { name: 'Risotto Milanese', ingredients: ['Arborio rice', 'saffron', 'butter', 'onion', 'Parmesan', 'chicken stock'] },
+      { name: 'Caprese Salad', ingredients: ['Fresh mozzarella', 'tomatoes', 'basil', 'olive oil', 'balsamic vinegar'] },
+      { name: 'Tiramisu', ingredients: ['Ladyfingers', 'mascarpone', 'coffee', 'cocoa powder', 'sugar', 'eggs'] },
+      { name: 'Pesto Pasta', ingredients: ['Pasta', 'basil', 'pine nuts', 'Parmesan', 'garlic', 'olive oil'] },
+      { name: 'Focaccia', ingredients: ['Flour', 'olive oil', 'yeast', 'salt', 'rosemary'] },
+      { name: 'Osso Buco', ingredients: ['Veal shanks', 'onion', 'celery', 'carrots', 'white wine', 'tomato paste'] },
+      { name: 'Gnocchi', ingredients: ['Potatoes', 'flour', 'egg', 'Parmesan'] },
+      { name: 'Tacos al Pastor', ingredients: ['Pork', 'pineapple', 'tortillas', 'onions', 'cilantro', 'achiote paste'] },
+      { name: 'Guacamole', ingredients: ['Avocado', 'lime', 'onion', 'tomato', 'cilantro'] },
+      { name: 'Chilaquiles', ingredients: ['Tortilla chips', 'green or red salsa', 'eggs', 'cheese', 'sour cream'] },
+      { name: 'Pozole', ingredients: ['Hominy', 'pork', 'onion', 'garlic', 'red chilies'] },
+      { name: 'Enchiladas', ingredients: ['Corn tortillas', 'chicken or beef', 'cheese', 'enchilada sauce'] },
+      { name: 'Tamales', ingredients: ['Corn masa', 'meat filling', 'corn husks', 'lard'] },
+      { name: 'Quesadillas', ingredients: ['Tortillas', 'cheese', 'optional chicken or vegetables'] },
+      { name: 'Elote', ingredients: ['Corn on the cob', 'mayonnaise', 'chili powder', 'cotija cheese'] },
+      { name: 'Mole Poblano', ingredients: ['Chicken', 'chocolate', 'chilies', 'nuts', 'spices'] },
+      { name: 'Sopes', ingredients: ['Masa dough', 'beans', 'meat', 'lettuce', 'crema'] },
+      { name: 'Butter Chicken', ingredients: ['Chicken', 'butter', 'cream', 'tomato sauce', 'spices'] },
+      { name: 'Paneer Tikka Masala', ingredients: ['Paneer', 'tomato sauce', 'cream', 'garam masala'] },
+      { name: 'Biryani', ingredients: ['Basmati rice', 'chicken or mutton', 'saffron', 'spices'] },
+      { name: 'Chana Masala', ingredients: ['Chickpeas', 'tomatoes', 'onions', 'garam masala', 'coriander'] },
+      { name: 'Aloo Gobi', ingredients: ['Potatoes', 'cauliflower', 'turmeric', 'ginger', 'cumin'] },
+      { name: 'Rogan Josh', ingredients: ['Lamb', 'yogurt', 'garlic', 'ginger', 'Kashmiri chili'] },
+      { name: 'Palak Paneer', ingredients: ['Paneer', 'spinach', 'garlic', 'ginger', 'cream'] },
+      { name: 'Naan', ingredients: ['Flour', 'yogurt', 'yeast', 'butter'] },
+      { name: 'Samosas', ingredients: ['Potatoes', 'peas', 'flour', 'spices', 'oil'] },
+      { name: 'Dosa', ingredients: ['Rice', 'black gram', 'fenugreek seeds', 'ghee'] },
+	  { name: 'Kabsa', ingredients: ['Basmati rice', 'chicken', 'lamb', 'tomatoes', 'cardamom', 'cinnamon', 'cloves', 'raisins', 'nuts'] },
+      { name: 'Mandi', ingredients: ['Rice', 'lamb', 'chicken', 'black lime', 'cardamom', 'cloves', 'saffron'] },
+      { name: 'Kofta', ingredients: ['Ground lamb', 'beef', 'onions', 'parsley', 'cumin', 'coriander', 'garlic'] },
+      { name: 'Fatteh', ingredients: ['Pita bread', 'yogurt', 'chickpeas', 'tahini', 'pine nuts', 'garlic'] },
+      { name: 'Harees', ingredients: ['Wheat', 'lamb', 'chicken', 'butter', 'cardamom', 'cinnamon'] },
+      { name: 'Shish Tawook', ingredients: ['Chicken', 'yogurt', 'garlic', 'lemon juice', 'paprika', 'cumin'] },
+      { name: 'Mujaddara', ingredients: ['Lentils', 'rice', 'onions', 'olive oil', 'cumin'] },
+      { name: 'Stuffed Grape Leaves (Warak Enab)', ingredients: ['Grape leaves', 'rice', 'ground meat', 'tomatoes', 'lemon juice'] },
+      { name: 'Knafeh', ingredients: ['Shredded phyllo dough', 'cheese', 'sugar syrup', 'rose water'] },
+      { name: 'Machboos', ingredients: ['Rice', 'chicken', 'lamb', 'dried limes', 'tomatoes', 'turmeric', 'cinnamon'] },
+    ]; 
+
+      function searchDishes() {
+      // reads the user input and converts it to lowercase for a case-insensitive search
+      const input = document.getElementById('ingredientInput').value.toLowerCase();
+
+      // splits the user input string into an array of ingredients based on commas,
+      // then trims spaces from each ingredient using `.map()` and `trim()`.
+      const inputIngredients = input.split(',').map(ingredient => ingredient.trim());
+
+      // filters the `dishes` array to include only dishes where all user-provided ingredients
+      // are present in the dish's ingredients list.
+      const results = dishes.filter(function(dish) {
+        for (let i = 0; i < inputIngredients.length; i++) {
+          const ingredient = inputIngredients[i]; // Gets a single ingredient provided by the user
+
+          // `dish.ingredients` is the array of ingredients for the current dish being checked.
+          // the `.some()` method checks if any ingredient in `dish.ingredients` matches the current user-provided ingredient.
+          const ingredientExists = dish.ingredients.some(function(dishIngredient) {
+            return dishIngredient.toLowerCase().includes(ingredient); // Checks if the current dish ingredient contains the user-provided ingredient
+          });
+
+          // if an ingredient does not exist, exclude this dish from the results
+          if (!ingredientExists) {
+            return false;
+          }
+        }
+
+        // if all ingredients match, include this dish in the results
+        return true;
+      });
+
+      // calls on the `displayDishes` function with `results` as its parameter
+      displayDishes(results);
+    }
+
+    function displayDishes(results) {
+      // Gets the HTML element to display results
+      const dishResults = document.getElementById('dishResults');
+
+      if (results.length > 0) {
+        // Uses `.map()` to iterate over the `results` array and generate an array of HTML `<p>` tags for each dish name.
+        // `.join('')` combines the array into a single string, ready to be displayed in the DOM.
+        dishResults.innerHTML = results.map(function(dish) {
+          return `<p>${dish.name}</p>`; // Generates an HTML `<p>` tag for the dish name
+        }).join('');
+      } else {
+        // If no dishes match, display a "no results" message
+        dishResults.innerHTML = '<p>No matching dishes found.</p>';
+      }
+    }
+  </script>
+  
 </head>
-
 <body>
-	<form action= "http://www.deitel.com" method="post">
-	
-		<label>Enter the ingredients you have so that we can generate a delicious dish for you!
-		<input type="text" name="ingredients">
-		</label>
-		
-		<input type="submit" value="Submit">
-	</form>
-	
-	
+  <h1>Dish Finder</h1>
+  
+  <p>Enter the ingredients you have so that we can generate a delicious dish for you!</p>
+  
+  <!-- Ingredient Input -->
+  <input id="ingredientInput" type="text" placeholder="Enter an ingredient (e.g., chicken)" />
+  <button onclick="searchDishes()">Search Dishes</button>
+  
+  <!-- Dish Results -->
+  <div id="dishResults"></div>
+  
+  
 </body>
-
 </html>
