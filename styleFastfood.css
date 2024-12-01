@@ -1,8 +1,8 @@
 body {
 	border: 2px dashed #f084ab;
 	background-image: url(https://img.freepik.com/premium-vector/vector-flor…imalist-style-flowers-flat-design_616756-1482.jpg);
-	background-repeat: no-repeat;
-	background-size: cover;
+	background-repeat: repeat;
+	background-size: 500px 500px;
 	background-attachment: fixed;
 }
 
