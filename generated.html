@@ -16,16 +16,10 @@
 		text-align: center;
 		box-shadow: 0px 4px 8px rgba(255, 182, 193, 0.4); /* Light pink shadow */
 	}
-
-	
-	
-	
 </style>
-  
-  <script>
-    // creates an array of objects, where each object contains:
-    // - `name`: the dish's name.
-    // - `ingredients`: an array of ingredients required for the dish.
+
+<script>
+    // Creates an array of dishes, each with a name and ingredients.
     const dishes = [
       { name: 'Spaghetti Carbonara', ingredients: ['Spaghetti', 'eggs', 'Parmesan cheese', 'pancetta', 'black pepper'] },
       { name: 'Margherita Pizza', ingredients: ['Pizza dough', 'tomato sauce', 'fresh mozzarella', 'basil', 'olive oil'] },
@@ -47,7 +41,7 @@
       { name: 'Elote', ingredients: ['Corn on the cob', 'mayonnaise', 'chili powder', 'cotija cheese'] },
       { name: 'Mole Poblano', ingredients: ['Chicken', 'chocolate', 'chilies', 'nuts', 'spices'] },
       { name: 'Sopes', ingredients: ['Masa dough', 'beans', 'meat', 'lettuce', 'crema'] },
-      { name: 'Butter Chicken', ingredients: ['Chicken', 'butter', 'cream', 'tomato sauce', 'spices'] },
+      { name: 'Butter Chicken', ingredients: ['Chicken', 'butter', 'cream', 'tomato sauce', 'spices', 'tomato'] },
       { name: 'Paneer Tikka Masala', ingredients: ['Paneer', 'tomato sauce', 'cream', 'garam masala'] },
       { name: 'Biryani', ingredients: ['Basmati rice', 'chicken or mutton', 'saffron', 'spices'] },
       { name: 'Chana Masala', ingredients: ['Chickpeas', 'tomatoes', 'onions', 'garam masala', 'coriander'] },
@@ -57,7 +51,7 @@
       { name: 'Naan', ingredients: ['Flour', 'yogurt', 'yeast', 'butter'] },
       { name: 'Samosas', ingredients: ['Potatoes', 'peas', 'flour', 'spices', 'oil'] },
       { name: 'Dosa', ingredients: ['Rice', 'black gram', 'fenugreek seeds', 'ghee'] },
-	  { name: 'Kabsa', ingredients: ['Basmati rice', 'chicken', 'lamb', 'tomatoes', 'cardamom', 'cinnamon', 'cloves', 'raisins', 'nuts'] },
+      { name: 'Kabsa', ingredients: ['Basmati rice', 'chicken', 'lamb', 'tomatoes', 'cardamom', 'cinnamon', 'cloves', 'raisins', 'nuts'] },
       { name: 'Mandi', ingredients: ['Rice', 'lamb', 'chicken', 'black lime', 'cardamom', 'cloves', 'saffron'] },
       { name: 'Kofta', ingredients: ['Ground lamb', 'beef', 'onions', 'parsley', 'cumin', 'coriander', 'garlic'] },
       { name: 'Fatteh', ingredients: ['Pita bread', 'yogurt', 'chickpeas', 'tahini', 'pine nuts', 'garlic'] },
@@ -67,72 +61,86 @@
       { name: 'Stuffed Grape Leaves (Warak Enab)', ingredients: ['Grape leaves', 'rice', 'ground meat', 'tomatoes', 'lemon juice'] },
       { name: 'Knafeh', ingredients: ['Shredded phyllo dough', 'cheese', 'sugar syrup', 'rose water'] },
       { name: 'Machboos', ingredients: ['Rice', 'chicken', 'lamb', 'dried limes', 'tomatoes', 'turmeric', 'cinnamon'] },
-    ]; 
+    ];
 
-      function searchDishes() {
-      // reads the user input and converts it to lowercase for a case-insensitive search
-      const input = document.getElementById('ingredientInput').value.toLowerCase();
+    // Function to trim spaces from ingredients
+    function trimIngredient(ingredient) {
+        return ingredient.trim();
+    }
 
-      // splits the user input string into an array of ingredients based on commas,
-      // then trims spaces from each ingredient using `.map()` and `trim()`.
-      const inputIngredients = input.split(',').map(ingredient => ingredient.trim());
+    // Function to check if an ingredient exists in the dish
+	function ingredientExists(dishIngredient, ingredient) {
+		return dishIngredient.toLowerCase().includes(ingredient.toLowerCase());
+	}
 
-      // filters the `dishes` array to include only dishes where all user-provided ingredients
-      // are present in the dish's ingredients list.
-      const results = dishes.filter(function(dish) {
+	// Example of using it inside a filter function
+	function checkIfIngredientExists(dishIngredients, ingredient) {
+		return dishIngredients.some(function(dishIngredient) { //.some() goes through each element in teh array in this case each ingredient in the dish
+			return ingredientExists(dishIngredient, ingredient);
+		});
+	}
+
+    // Function to check if a dish contains all ingredients
+    function doesDishContainIngredients(dish, inputIngredients) {
         for (let i = 0; i < inputIngredients.length; i++) {
-          const ingredient = inputIngredients[i]; // Gets a single ingredient provided by the user
+            const ingredient = inputIngredients[i]; // Gets a single ingredient provided by the user
 
-          // `dish.ingredients` is the array of ingredients for the current dish being checked.
-          // the `.some()` method checks if any ingredient in `dish.ingredients` matches the current user-provided ingredient.
-          const ingredientExists = dish.ingredients.some(function(dishIngredient) {
-            return dishIngredient.toLowerCase().includes(ingredient); // Checks if the current dish ingredient contains the user-provided ingredient
-          });
+            // Calls checkIfIngredientExists to see if the dish has the current ingredient
+            const ingredientExists = checkIfIngredientExists(dish.ingredients, ingredient);
 
-          // if an ingredient does not exist, exclude this dish from the results
-          if (!ingredientExists) {
-            return false;
-          }
+            // If an ingredient does not exist, exclude this dish from the results
+            if (!ingredientExists) {
+                return false;
+            }
         }
-
-        // if all ingredients match, include this dish in the results
         return true;
-      });
-
-      // calls on the `displayDishes` function with `results` as its parameter
-      displayDishes(results);
     }
 
+    // Function to filter dishes based on input ingredients
+    function searchDishes() {
+        // Reads the user input and converts it to lowercase for a case-insensitive search
+        const input = document.getElementById('ingredientInput').value.toLowerCase();
+
+        // Splits the user input string into an array of ingredients based on commas,
+        // then trims spaces using the named trimIngredient function
+        const inputIngredients = input.split(',').map(trimIngredient);
+
+        // Filters the `dishes` array to include only dishes where all user-provided ingredients are present in the dish's ingredients list.
+        const results = dishes.filter(function(dish) {
+            // Calls the named function for each dish
+            return doesDishContainIngredients(dish, inputIngredients);
+        });
+
+        // Calls on the `displayDishes` function with `results` as its parameter
+        displayDishes(results);
+    }
+
+    // Function to display the matching dishes
     function displayDishes(results) {
-      // Gets the HTML element to display results
-      const dishResults = document.getElementById('dishResults');
+        // Gets the HTML element to display results
+        const dishResults = document.getElementById('dishResults');
 
-      if (results.length > 0) {
-        // Uses `.map()` to iterate over the `results` array and generate an array of HTML `<p>` tags for each dish name.
-        // `.join('')` combines the array into a single string, ready to be displayed in the DOM.
-        dishResults.innerHTML = results.map(function(dish) {
-          return `<p>${dish.name}</p>`; // Generates an HTML `<p>` tag for the dish name
-        }).join('');
-      } else {
-        // If no dishes match, display a "no results" message
-        dishResults.innerHTML = '<p>No matching dishes found.</p>';
-      }
+        if (results.length > 0) {
+            // Uses `.map()` to iterate over the `results` array and generate an array of HTML `<p>` tags for each dish name.
+            // `.join('')` combines the array into a single string, ready to be displayed in the DOM.
+            dishResults.innerHTML = results.map(createDishHTML).join('');
+        } else {
+            // If no dishes match, display a "no results" message
+            dishResults.innerHTML = '<p>No matching dishes found.</p>';
+        }
     }
-  </script>
-  
+
+    // Function to create HTML for each dish
+    function createDishHTML(dish) {
+        return `<p>${dish.name}</p>`; // Generates an HTML `<p>` tag for the dish name $ sign which is jQuery and is used to call on the dish.name in the array
+    }
+</script>
+
 </head>
 <body>
-  <h1>Dishes from your kitchen</h1>
+  <label for="ingredientInput">Enter Ingredients (comma-separated):</label>
+  <input type="text" id="ingredientInput" oninput="searchDishes()">
   
-  <p>Enter the ingredients you have so that we can generate a delicious dish for you!</p>
-  
-  <!-- Ingredient Input -->
-  <input id="ingredientInput" type="text" placeholder="Enter an ingredient (e.g., chicken)" />
-  <button onclick="searchDishes()">Search Dishes</button>
-  
-  <!-- Dish Results -->
   <div id="dishResults"></div>
-  
-  
 </body>
 </html>
