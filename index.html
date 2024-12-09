@@ -8,7 +8,7 @@
     body, table {
         margin: 0 auto;
         max-width: 1000px;
-      text-align: center;}
+	text-align: center;}
     nav table {
         width: 100%;
         background-color: #ffffff;}
@@ -21,7 +21,6 @@
         border-radius: 8px;
         box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
         background-color: rgba(255, 255, 255, 0.75);}
-
     footer {
         padding: 10px;
         text-align: left;
@@ -37,11 +36,12 @@
         var myForm = document.getElementById("myForm");
 
         myForm.addEventListener("submit", function (event) {
-        event.preventDefault();
+        event.preventDefault(); // prevent default form submission (stay on same page and show below js)
 
         var email = emailInput.value; 
         var confirmationMessage = "Please ensure the email you have provided is correct: " + email;
 
+	// if confirm selected on message, new message shown & input field cleared	
         if (confirm(confirmationMessage)) {
                 window.alert("Thank you for subscribing to our newsletter!");
                 emailInput.value = "";  
@@ -49,7 +49,7 @@
         });
 
         emailInput.addEventListener("focus", function () {
-            emailInput.style.color = "green"; 
+            emailInput.style.color = "green";  // change color of text in text field
         });
 
         emailInput.addEventListener("blur", function () {
@@ -86,12 +86,13 @@
         <caption><h3> Explore </h3></caption>
                 
         	<tbody>
+		<!-- links within the page -->
             	<tr>
                 <th><a href="#spotlight">Today's special</a></th>
                 <th><a href="#community">Community</a></th>
                 <th><a href="#contact">Contact Us</a></th>
             	</tr>
-                    	
+                <!-- links to other pages of the website -->	
             	<tr>
                 <th><a href="traditional.html">Traditional Recipes</a></th>
                 <th><a href="fastfood.html">Fast-Food Copycat Recipes</a></th>
@@ -110,14 +111,15 @@
     		<figure>
 			<img src="https://wildflourskitchen.com/wp-content/uploads/2016/04/Copycat-FIVE-GUYS-Fries-720x405.jpg" alt="Recipe of the Day" width="300" height="200">
 				<figcaption>
+				<!-- goes to a specific section in our selected file -->
 				<a href="fastfood.html#five">Five guys copycat cajun fries recipe</a>
 				</figcaption>
 			</figure>
 
         </article>
     
-		<article>
-        	<h2>Ingredient Spotlight: Avocado</h2>
+	<article>
+            <h2>Ingredient Spotlight: Avocado</h2>
     		<p>Some recipes with this nutrient rich food you can try:</p>
     		<ul>
         		<li>Avocado Toast</li>
@@ -126,20 +128,19 @@
     		</ul>
          </article>
 
-		<article>
-			<h2 id = "community">Join Our Community</h2>
-			<p> We value your feedback! Share your thoughts and suggestions <a href="feedback.html"> here.</a> </p>
-				<blockquote> "Cooking is like love. It should be entered into with abandon or not at all." – Julia Child </blockquote>
-        
+	<article>
+	    <h2 id = "community">Join Our Community</h2>
+		<p> We value your feedback! Share your thoughts and suggestions <a href="feedback.html"> here.</a> </p>
+			<blockquote> "Cooking is like love. It should be entered into with abandon or not at all." – Julia Child </blockquote>
 			<strong> Subscribe to Our Newsletter </strong>
 			<form id="myForm" method="post" action="https://maitchaa.github.io/12_6/">
-    <label for="email">Email:</label>
-    <input type="email" name="email" id="email"  placeholder="Your email">
-    <input type="submit" value="Subscribe">
-</form>
+    				<label for="email">Email:</label>
+    				<input type="email" name="email" id="email"  placeholder="Your email">
+    				<input type="submit" value="Subscribe">
+			</form>
 
-		</article>
-    </section>
+	</article>
+    	
 	
 	<article>
             <h2>Cooking tips of the day</h2>
@@ -158,6 +159,7 @@
 				</li>
 			</ol>
         </article>
+	</section>
     
     <footer>
     	<h2 id = "contact">Contact Us</h2>
