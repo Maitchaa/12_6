@@ -71,16 +71,18 @@
     }
   </style>
     <script>
-      function submitMessage() {
-        event.preventDefault();
-        alert("Thank you for your feedback!");
+      var form = document.getElementById("feedbackForm");
+      form.onsubmit = function(event) {
+        event.preventDefault(); 
+        window.alert("Thank you for your feedback!");
+        form.reset();
       }
 </script>
 </head>
   <body>
     <h1>Feedback Form</h1>
     <center>
-      <form method = "post" onsubmit="submitMessage(event)">
+      <form method = "post">
         <table>
           <tr>
             <td>Name:</td>
